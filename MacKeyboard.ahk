@@ -60,13 +60,24 @@ SendMode Input
 ; Remap Windows + Tab to Alt + Tab.
 ; Lwin & Tab::AltTab
 
+; --------------------------------------------------------------
+; Virtual Desktop Shortcut
+; --------------------------------------------------------------
+
 ^!Left::Send #^{Left}
 ^!Right::Send #^{Right}
 ^!Up::Send #{Tab}
 
 ; Be sure to setup https://github.com/Eun/MoveToDesktop
-^!+Left::Send #!{Left}
-^!+Right::Send #!{Right}
+; Move windown to another desktop
+^+[::
+  Send #!{Left}
+  Send ^#{Left}
+  Return
+^+]::
+  Send #!{Right}
+  Send ^#{Right}
+  Return
 
 ; --------------------------------------------------------------
 ; Text Editing Shortcut
@@ -146,58 +157,6 @@ ResizeWindow(deltaWidth, deltaHeight)
 }
 
 ; --------------------------------------------------------------
-; OS X keyboard mappings for special chars
-; --------------------------------------------------------------
-
-; Map Alt + L to @
-!l::SendInput {@}
-
-; Map Alt + N to \
-+!7::SendInput {\}
-
-; Map Alt + N to ©
-!g::SendInput {©}
-
-; Map Alt + o to ø
-!o::SendInput {ø}
-
-; Map Alt + 5 to [
-!5::SendInput {[}
-
-; Map Alt + 6 to ]
-!6::SendInput {]}
-
-; Map Alt + E to €
-!e::SendInput {€}
-
-; Map Alt + - to –
-!-::SendInput {–}
-
-; Map Alt + 8 to {
-!8::SendInput {{}
-
-; Map Alt + 9 to }
-!9::SendInput {}}
-
-; Map Alt + - to ±
-!+::SendInput {±}
-
-; Map Alt + R to ®
-!r::SendInput {®}
-
-; Map Alt + N to |
-!7::SendInput {|}
-
-; Map Alt + W to ∑
-!w::SendInput {∑}
-
-; Map Alt + N to ~
-!n::SendInput {~}
-
-; Map Alt + 3 to #
-!3::SendInput {#}
-
-; --------------------------------------------------------------
 ; Application specific
 ; --------------------------------------------------------------
 
@@ -246,4 +205,6 @@ ResizeWindow(deltaWidth, deltaHeight)
   ^-::Send !{Left}
   ^+::Send !{Right}
   ^=::Send !{Right}
+
+  #w::Send ^{F4}
 }
