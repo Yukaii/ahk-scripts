@@ -58,7 +58,15 @@ SendMode Input
 #q::Send !{F4}
 
 ; Remap Windows + Tab to Alt + Tab.
-Lwin & Tab::AltTab
+; Lwin & Tab::AltTab
+
+^!Left::Send #^{Left}
+^!Right::Send #^{Right}
+^!Up::Send #{Tab}
+
+; Be sure to setup https://github.com/Eun/MoveToDesktop
+^!+Left::Send #!{Left}
+^!+Right::Send #!{Right}
 
 ; --------------------------------------------------------------
 ; Text Editing Shortcut
