@@ -88,8 +88,10 @@ SendMode Input
 #Up::Send ^{Home}
 #Down::Send ^{End}
 
-+#Left::Send ^+{Home}
-+#Right::Send ^+{End}
++#Left::Send +{Home}
++#Right::Send +{End}
++#Up::Send ^+{Home}
++#Down::Send ^+{End}
 
 !Left::Send ^{Left}
 !Right::Send ^{Right}
