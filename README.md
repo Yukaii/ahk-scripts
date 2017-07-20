@@ -1,4 +1,4 @@
-# Yukai's AHK scripts
+# Yukai's AutoHotKey Setup
 
 ## Usage
 
@@ -16,3 +16,4 @@ Or make a link to `C:\Users\:username:\AppData\Roaming\Microsoft\Windows\Start M
 
 * https://github.com/stroebjo/autohotkey-windows-mac-keyboard
 * https://github.com/rcmdnk/vim_ahk/
+* https://github.com/sdias/win-10-virtual-desktop-enhancer
