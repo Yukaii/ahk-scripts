@@ -99,7 +99,11 @@ SendMode Input
 !+Left::Send ^+{Left}
 !+Right::Send ^+{Right}
 
-!BackSpace::Send ^{BackSpace}
+GroupAdd excludeEdit, ahk_exe ConEmu.exe
+#IfWinNotActive ahk_group excludeEdit
+{
+  !BackSpace::Send ^{BackSpace}
+}
 
 #BackSpace::
   Send +{Home}
@@ -209,4 +213,10 @@ ResizeWindow(deltaWidth, deltaHeight)
   ^=::Send !{Right}
 
   #w::Send ^{F4}
+}
+
+#IfWinActive, ahk_exe ConEmu.exe
+{
+  ^w::Send !{BackSpace}
+  #w::Send ^w
 }
