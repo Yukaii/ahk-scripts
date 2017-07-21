@@ -133,15 +133,48 @@ return
 ^!#+j::ResizeWindow(0, 10)
 ^!#+k::ResizeWindow(0, -10)
 
-#`::    ; Next window
-WinGetClass, ActiveClass, A
-WinSet, Bottom,, A
-WinActivate, ahk_class %ActiveClass%
+
+; Modify from https://superuser.com/a/691418
+; Active window switcher
+#`:: ; Next window
+WinGet, ActiveProcess, ProcessName, A
+WinGet, WinClassCount, Count, ahk_exe %ActiveProcess%
+
+IF WinClassCount = 1
+    Return
+Else
+WinGet, List, List, % "ahk_exe " ActiveProcess
+Loop, % List
+{
+    index := List - A_Index + 1
+    WinGet, State, MinMax, % "ahk_id " List%index%
+    if (State <> -1)
+    {
+        WinID := List%index%
+        break
+    }
+}
+WinActivate, % "ahk_id " WinID
 return
 
-#~::    ; Last window
-WinGetClass, ActiveClass, A
-WinActivateBottom, ahk_class %ActiveClass%
+#+`:: ; Last window
+WinGet, ActiveProcess, ProcessName, A
+WinGet, WinClassCount, Count, ahk_exe %ActiveProcess%
+IF WinClassCount = 1
+    Return
+Else
+WinGet, List, List, % "ahk_exe " ActiveProcess
+Loop, % List
+{
+    index := List - A_Index + 1
+    WinGet, State, MinMax, % "ahk_id " List%index%
+    if (State <> -1)
+    {
+        WinID := List%index%
+        break
+    }
+}
+WinActivate, % "ahk_id " WinID
 return
 
 CenterActiveWindow()
