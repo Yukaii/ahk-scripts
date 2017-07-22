@@ -141,18 +141,18 @@ WinGet, ActiveProcess, ProcessName, A
 WinGet, WinClassCount, Count, ahk_exe %ActiveProcess%
 
 IF WinClassCount = 1
-    Return
+  Return
 Else
 WinGet, List, List, % "ahk_exe " ActiveProcess
 Loop, % List
 {
-    index := List - A_Index + 1
-    WinGet, State, MinMax, % "ahk_id " List%index%
-    if (State <> -1)
-    {
-        WinID := List%index%
-        break
-    }
+  index := List - A_Index + 1
+  WinGet, State, MinMax, % "ahk_id " List%index%
+  if (State <> -1)
+  {
+    WinID := List%index%
+    break
+  }
 }
 WinActivate, % "ahk_id " WinID
 return
@@ -161,18 +161,18 @@ return
 WinGet, ActiveProcess, ProcessName, A
 WinGet, WinClassCount, Count, ahk_exe %ActiveProcess%
 IF WinClassCount = 1
-    Return
+  Return
 Else
 WinGet, List, List, % "ahk_exe " ActiveProcess
 Loop, % List
 {
-    index := List - A_Index + 1
-    WinGet, State, MinMax, % "ahk_id " List%index%
-    if (State <> -1)
-    {
-        WinID := List%index%
-        break
-    }
+  index := List - A_Index + 1
+  WinGet, State, MinMax, % "ahk_id " List%index%
+  if (State <> -1)
+  {
+    WinID := List%index%
+    break
+  }
 }
 WinActivate, % "ahk_id " WinID
 return
