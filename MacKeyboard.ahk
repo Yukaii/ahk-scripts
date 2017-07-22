@@ -180,7 +180,8 @@ return
 CenterActiveWindow()
 {
   WinGetPos,,, Width, Height, A
-  WinMove, A, , (A_ScreenWidth/2)-(Width/2), (A_ScreenHeight/2)-(Height/2)
+  WinGetPos,,,,h, ahk_class Shell_TrayWnd
+  WinMove, A, , (A_ScreenWidth/2)-(Width/2), ((A_ScreenHeight-h)/2)-(Height/2)
 }
 
 MoveWindow(moveX, moveY)
