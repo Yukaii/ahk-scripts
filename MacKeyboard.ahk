@@ -60,6 +60,9 @@ SendMode Input
 ; Remap Windows + Tab to Alt + Tab.
 ; Lwin & Tab::AltTab
 
+; Block Ctrl + ESC to open start menu
+^Escape::return
+
 ; --------------------------------------------------------------
 ; Virtual Desktop Shortcut
 ; --------------------------------------------------------------
