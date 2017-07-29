@@ -71,17 +71,6 @@ SendMode Input
 ^!Right::Send #^{Right}
 ^!Up::Send #{Tab}
 
-; Be sure to setup https://github.com/Eun/MoveToDesktop
-; Move windown to another desktop
-^+[::
-  Send #!{Left}
-  Send ^#{Left}
-  Return
-^+]::
-  Send #!{Right}
-  Send ^#{Right}
-  Return
-
 ; --------------------------------------------------------------
 ; Text Editing Shortcut
 ; --------------------------------------------------------------
