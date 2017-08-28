@@ -197,7 +197,7 @@ ResizeWindow(deltaWidth, deltaHeight)
 GroupAdd support_browsers, ahk_exe opera.exe
 GroupAdd support_browsers, ahk_exe chrome.exe
 
-#IfWinActive, ahk_group support_browsers
+#IfWinActive ahk_group support_browsers
 {
   ; Show Web Developer Tools with cmd + alt + i
   #!i::Send ^+i
