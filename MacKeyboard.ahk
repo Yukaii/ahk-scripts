@@ -192,8 +192,12 @@ ResizeWindow(deltaWidth, deltaHeight)
 ; Application specific
 ; --------------------------------------------------------------
 
-; Opera
-#IfWinActive, ahk_exe opera.exe
+; Chrome-based Browsers support
+
+GroupAdd support_browsers, ahk_exe opera.exe
+GroupAdd support_browsers, ahk_exe chrome.exe
+
+#IfWinActive, ahk_group support_browsers
 {
   ; Show Web Developer Tools with cmd + alt + i
   #!i::Send ^+i
