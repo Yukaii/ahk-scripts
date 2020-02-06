@@ -22,37 +22,38 @@ SendMode Input
 ; --------------------------------------------------------------
 
 ; Make Ctrl + S work with cmd (windows) key
-#s::^s
+#s::Send, ^s
 
 ; Selecting
-#a::^a
+#a::Send, ^a
 
 ; Copying
-#c::^c
+#c::Send, ^c
 
 ; Pasting
-#v::^v
+#v::Send, ^v
 
 ; Cutting
-#x::^x
+#x::Send, ^x
 
 ; Opening
-#o::^o
+#o::Send, ^o
 
 ; Finding
 #f::Send ^f
 
 ; Undo
-#z::^z
+#z::Send, ^z
++#z::Send, ^y
 
 ; Redo
-#y::^y
+#y::Send, ^y
 
 ; New tab
-#t::^t
+#t::Send, ^t
 
 ; close tab
-#w::^w
+#w::Send, ^w
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
@@ -70,6 +71,29 @@ SendMode Input
 ^!Left::Send #^{Left}
 ^!Right::Send #^{Right}
 ^!Up::Send #{Tab}
+
+; --------------------------------------------------------------
+; Mission Control
+; --------------------------------------------------------------
+; Switch Alt+Tab & Win+Tab
+LAlt & Tab::Send #{Tab}
+
+LWin & Tab:: 
+    AltTabMenu := true
+    If GetKeyState("Shift","P")
+        Send {Alt Down}{Shift Down}{Tab}
+    else
+        Send {Alt Down}{Tab}
+return
+
+#If (AltTabMenu)
+
+    ~*LWin Up::
+        Send {Shift Up}{Alt Up}
+        AltTabMenu := false 
+    return
+
+#If
 
 ; --------------------------------------------------------------
 ; Text Editing Shortcut
@@ -200,53 +224,47 @@ GroupAdd support_browsers, ahk_exe chrome.exe
 #IfWinActive ahk_group support_browsers
 {
   ; Show Web Developer Tools with cmd + alt + i
-  #!i::Send ^+i
+  #!i::Send, ^+i
 
   ; Show source code with cmd + alt + u
-  #!u::Send ^u
+  #!u::Send, ^u
 
   ; next/previous remapping
-  ^n::Send {Down}
-  ^p::Send {Up}
+  ^n::Send, {Down}
+  ^p::Send, {Up}
 
   ; new window remap
-  #n::Send ^n
-  #+n::Send ^+n
+  #n::Send, ^n
+  #+n::Send, ^+n
 
-  #w::Send ^w
-  #t::Send ^t
+  #w::Send, ^w
+  #t::Send, ^t
 
   ; Text editing remap
-  ^w::Send ^{BackSpace}
+  ^w::Send, ^{BackSpace}
 
-  #+k::Send ^{PgDn}
-  #+j::Send ^{PgUp}
+;  +#[::Send, ^{Tab}
+;  +#]::Send ^+{Tab}
 
-  #1::Send ^1
-  #2::Send ^2
-  #3::Send ^3
-  #4::Send ^4
-  #5::Send ^5
-  #6::Send ^6
-  #7::Send ^7
-  #8::Send ^8
-  #9::
-    Send ^1
-    Send ^{PgUp}
-    return
+  #+k::Send, ^{PgDn}
+  #+j::Send, ^{PgUp}
+
+  #1::Send, ^{Numpad1}
+  #2::Send, ^{Numpad2}
+  #3::Send, ^{Numpad3}
+  #4::Send, ^{Numpad4}
+  #5::Send, ^{Numpad5}
+  #6::Send, ^{Numpad6}
+  #7::Send, ^{Numpad7}
+  #8::Send, ^{Numpad8}
+  #9::Send, ^{Numpad9}
 }
 
 #IfWinActive, ahk_exe Code.exe
 {
-  ^-::Send !{Left}
-  ^+::Send !{Right}
-  ^=::Send !{Right}
+  ^-::Send, !{Left}
+  ^+::Send, !{Right}
+  ^=::Send, !{Right}
 
-  #w::Send ^{F4}
-}
-
-#IfWinActive, ahk_exe ConEmu.exe
-{
-  ^w::Send !{BackSpace}
-  #w::Send ^w
+  #w::Send, ^{F4}
 }
