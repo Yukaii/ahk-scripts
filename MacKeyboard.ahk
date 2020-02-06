@@ -64,6 +64,10 @@ SendMode Input
 ; Block Ctrl + ESC to open start menu
 ^Escape::return
 
+; Shift + Wheel for horizontal scrolling
++WheelDown::WheelRight
++WheelUp::WheelLeft
+
 ; --------------------------------------------------------------
 ; Virtual Desktop Shortcut
 ; --------------------------------------------------------------
