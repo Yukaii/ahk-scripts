@@ -31,7 +31,7 @@ SendMode Input
 #c::Send, ^c
 
 ; Pasting
-#v::Send, ^v
+; #v::Send, ^v
 
 ; Cutting
 #x::Send, ^x
