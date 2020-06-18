@@ -135,7 +135,7 @@ return
 ; --------------------------------------------------------------
 
 #m::WinMinimize,a ; minimize windows
-!+m::WinMaximize,a
+!+m::MaximizeWindowWithGap()
 !+n::WinRestore,a
 
 !+l::Send #{Right}
@@ -214,6 +214,16 @@ ResizeWindow(deltaWidth, deltaHeight)
 {
   WinGetPos, , , W, H, A
   WinMove, A, , , , W + deltaWidth, H + deltaHeight
+}
+
+MaximizeWindowWithGap()
+{
+  WinRestore,A
+  WinGetPos,,,,, A
+  WinGetPos,,,,h, ahk_class Shell_TrayWnd
+  WinMove, A, , ,,(A_ScreenWidth - 100), (A_ScreenHeight - h - 70)
+
+  CenterActiveWindow()
 }
 
 ; --------------------------------------------------------------
